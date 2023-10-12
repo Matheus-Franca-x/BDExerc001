@@ -4,42 +4,42 @@ USE clinica
 GO
 CREATE TABLE especialidade 
 (
-	id_especialidade INT NOT NULL,
-	especialidade VARCHAR(100) NOT NULL
+	id_especialidade 		INT 		NOT NULL,
+	especialidade 			VARCHAR(100) 	NOT NULL
 	PRIMARY KEY(id_especialidade) 
 )
 GO
 CREATE TABLE medico 
 (
-	codigo_medico		INT 			NOT NULL,
+	codigo_medico			INT 		NOT NULL,
 	nome				VARCHAR(100) 	NOT NULL,
 	logradouro			VARCHAR(200)	NOT NULL,
-	numero				INT				NOT NULL,
-	cep					CHAR(8)			NOT NULL,
+	numero				INT		NOT NULL,
+	cep				CHAR(8)		NOT NULL,
 	complemento			VARCHAR(255)	NOT NULL,
-	contato				VARCHAR(11)		NOT NULL,
-	id_especialidade	INT				NOT NULL
+	contato				VARCHAR(11)	NOT NULL,
+	id_especialidade		INT		NOT NULL
 	PRIMARY KEY (codigo_medico)
 	FOREIGN KEY (id_especialidade) REFERENCES especialidade(id_especialidade)
 )
 GO
 CREATE TABLE paciente
 (
-	num_beneficiario	INT 			NOT NULL,
+	num_beneficiario		INT 		NOT NULL,
 	nome				VARCHAR(100)	NOT NULL,
 	logradouro			VARCHAR(200)	NOT NULL,
-	numero				INT				NOT NULL,
-	cep					CHAR(8)			NOT NULL,
+	numero				INT		NOT NULL,
+	cep				CHAR(8)		NOT NULL,
 	complemento			VARCHAR(255)	NOT NULL,
-	telefone			VARCHAR(11)		NOT NULL
+	telefone			VARCHAR(11)	NOT NULL
 	PRIMARY KEY (num_beneficiario)
 )
 GO
 CREATE TABLE consulta
 (
-	num_beneficiario	INT 			NOT NULL,
-	codigo_medico		INT				NOT NULL,
-	data_hora			DATETIME		NOT NULL,
+	num_beneficiario		INT 		NOT NULL,
+	codigo_medico			INT		NOT NULL,
+	data_hora			DATETIME	NOT NULL,
 	observacao			VARCHAR(255)	NOT NULL
 	PRIMARY KEY (num_beneficiario, codigo_medico, data_hora)
 	FOREIGN KEY (num_beneficiario) REFERENCES paciente (num_beneficiario),
